@@ -29,6 +29,10 @@ class Product:
         self.active = True  # Default attribute
 
 
+    def __str__(self):
+        return f"{self.name}, Price: ${self.price}, Quantity: {self.quantity}"
+
+
     def get_quantity(self) -> float:
         """
         Getter function for quantity.
@@ -138,7 +142,7 @@ class Product:
             # Deactivate the product if quantity reaches 0
             if self.quantity == 0:
                 self.deactivate()
-            print(f"Total price: {float(total_price)}\n")
+            print(f"Total price: ${float(total_price)}\n")
             return float(total_price)
         else:
             print(f"Insufficient quantity of {self.name} in stock.\n")

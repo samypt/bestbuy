@@ -40,14 +40,12 @@ class Store:
         Raises:
             ValueError: If a list is provided, and it contains any element that is not an instance of Product.
         """
-        if isinstance(product, Product): # Add the single product to the list
+        if isinstance(product, Product):
             self.products.append(product)
-        elif isinstance(product, list):
-            # Check if all elements in the list are instances of Product
-            if all(isinstance(item, Product) for item in product):
-                self.products.extend(product)  # Add all products in the list
-            else:
-                raise ValueError("The list must only contain Product instances.")
+        elif isinstance(product, list) and all(isinstance(item, Product) for item in product):
+            self.products.extend(product)
+        else:
+            raise ValueError("Argument must be a Product instance or a list of Product instances.")
 
 
     def remove_product(self, product):
